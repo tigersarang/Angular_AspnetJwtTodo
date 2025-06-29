@@ -1,3 +1,4 @@
+import { AutoLogoutService } from './_services/auto-logout/auto-logout.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -13,6 +14,7 @@ import { CustomerService } from './_services/customer.service';
 export class AppComponent implements OnInit {
   title = 'todo-app';
   private customerService = inject(CustomerService);
+  private autoLogoutService = inject(AutoLogoutService);
 
   setCurrentUser() {
     const userString = localStorage.getItem('user');
@@ -21,6 +23,8 @@ export class AppComponent implements OnInit {
       const user = JSON.parse(userString);
       this.customerService.currentUser.set(user);
     }
+
+    this.autoLogoutService.init();
   }
 
   ngOnInit(): void {

@@ -79,5 +79,18 @@ namespace TodoWeb.Controllers
             await todoDbContext.SaveChangesAsync();
             return Ok(mapper.Map<TodoItemDto>(todoItem));
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTodoItemAsync(int id)
+        {
+            var todoItem = await todoDbContext.TodoItems.FindAsync(id);
+
+            if (todoItem == null) return NotFound("Todo item not found");
+
+            todoDbContext.Entry(todoItem).State = EntityState.Deleted;
+            await todoDbContext.SaveChangesAsync();
+
+            return Ok();
+        }
     }
 }

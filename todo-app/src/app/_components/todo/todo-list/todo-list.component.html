@@ -1,1 +1,36 @@
-<p>todo-list works!</p>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Todo List</h2>
+            <a href="todoAdd" class="btn btn-primary">Add New Todo</a>
+        </div>
+        ---
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Completed</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="todoTableBody">
+                  @for (item of todos; track item.id) {
+                    <tr>
+                        <td>{{item.id}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.description}}</td>
+                        <td><span class="badge bg-success">{{item.isCompleted}}</span></td>
+                        <td>
+                            <a class="btn btn-info btn-sm" href="todoDetail/{{item.id}}">View</a>
+                            <button class="btn btn-warning btn-sm" (click)="edit(item)" >Edit</button>
+                            <button class="btn btn-danger btn-sm" (click)="delete(item.id)">Delete</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <p class="text-center mt-3" id="noTodosMessage" style="display: none;">No Todo items found.</p>
+    </div>

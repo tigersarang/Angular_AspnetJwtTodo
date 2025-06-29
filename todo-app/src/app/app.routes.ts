@@ -5,6 +5,7 @@ import { LoginComponent } from './_components/customer/login/login.component';
 import { TodoListComponent } from './_components/todo/todo-list/todo-list.component';
 import { TodoRegisterComponent } from './_components/todo/todo-register/todo-register.component';
 import { TodoDetailComponent } from './_components/todo/todo-detail/todo-detail.component';
+import { TodoEditComponent } from './_components/todo/todo-edit/todo-edit.component';
 
   export const routes: Routes = [
     {path:'home', component: HomeComponent},
@@ -12,6 +13,7 @@ import { TodoDetailComponent } from './_components/todo/todo-detail/todo-detail.
     {path:'login', component: LoginComponent},
     {path:'todo', component: TodoListComponent},
     {path:'todoAdd', component: TodoRegisterComponent},
-    {path:'todoDetail', component: TodoDetailComponent},
+    {path:'todoEdit', component: TodoEditComponent},
+    {path:'todoDetail/:id', component: TodoDetailComponent},
     {path:'**', redirectTo: 'home', pathMatch:'full'}
   ];

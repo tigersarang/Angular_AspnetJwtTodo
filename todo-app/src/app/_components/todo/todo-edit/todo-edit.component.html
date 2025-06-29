@@ -1,22 +1,23 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
+      @if (todoEdit) {
         <div class="col-md-8 col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-center">Register New Todo</h3>
+                    <h3 class="card-title text-center">Edit Todo</h3>
                 </div>
                 <div class="card-body">
-                    <form #registerTodo="ngForm" (ngSubmit)="add()">
+                    <form #registerTodo="ngForm" (ngSubmit)="update()">
                         <div class="mb-3">
                             <label for="todoTitle" class="form-label">Title</label>
-                            <input type="text" class="form-control" [(ngModel)]="model.title" name="title" required>
+                            <input type="text" class="form-control" [(ngModel)]="todoEdit.title" name="title" required>
                         </div>
                         <div class="mb-3">
                             <label for="todoDescription" class="form-label">Description</label>
-                            <textarea class="form-control" [(ngModel)]="model.description" name="description" rows="3"></textarea>
+                            <textarea class="form-control" [(ngModel)]="todoEdit.description" name="description" rows="3"></textarea>
                         </div>
                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" [(ngModel)]="model.isCompleted"  name="isCompleted">
+                            <input type="checkbox" class="form-check-input" [(ngModel)]="todoEdit.isCompleted"  name="isCompleted">
                             <label class="form-check-label" for="todoIsCompleted">Is Completed?</label>
                         </div>
                         <div class="d-grid gap-2">
@@ -26,5 +27,6 @@
                 </div>
             </div>
         </div>
+      }
     </div>
 </div>

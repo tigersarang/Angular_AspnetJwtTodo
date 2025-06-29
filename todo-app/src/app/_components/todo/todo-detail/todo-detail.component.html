@@ -1,1 +1,23 @@
-<p>todo-detail works!</p>
+ <div class="container mt-5">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0">Todo Details</h2>
+        </div>
+        <div class="card-body">
+          @if (todo) {
+            <h3 class="card-title">{{ todo.title }}</h3>
+            <p class="card-text"><strong>Description:</strong> {{ todo.description }}</p>
+            <p class="card-text">
+              <strong>Status:</strong>
+              <span class="badge" [ngClass]="todo.isCompleted ? 'bg-success' : 'bg-danger'">
+                {{ todo.isCompleted ? 'Completed' : 'Pending' }}
+              </span>
+            </p>
+            <hr>
+            <div class="d-flex justify-content-between">
+              <a href="todo" class="btn btn-secondary">Back to List</a>
+              </div>
+            }
+        </div>
+      </div>
+    </div>
